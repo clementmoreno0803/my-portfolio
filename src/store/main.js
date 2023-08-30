@@ -1,16 +1,29 @@
 import { defineStore } from "pinia"
+import axios from 'axios'
 
 export const useDataStore = defineStore('data', {
     state: () => ({
         isHoveringContent: false,
-        isHoverNavigation: false
+        isHoverNavigation: false,
+        isHoverProject: false,
+        projects: []
     }),
     getters: {
-        doubleCount: (state) => state.count * 2,
+        projectsPreview() {
+            return this.projects.slice(0, 4);
+        }
     },
     actions: {
-        increment() {
-            this.count++
-        },
-    },
+        async getDataFromFirebase() {
+            try {
+                await axios.get('https://portfolio-44c30-default-rtdb.firebaseio.com/.json')
+                    .then((response) => {
+                        const data = response.data
+                        this.projects = data
+                    })
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
 })

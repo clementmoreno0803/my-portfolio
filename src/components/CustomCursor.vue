@@ -1,9 +1,10 @@
 <template>
   <div
-  class="custom-cursor"
+    class="custom-cursor"
     :class="{
       'hover-content': store.isHoveringContent,
       'hover-navigation': store.isHoverNavigation,
+      'hover-project': store.isHoverProject,
     }"
     :style="{ left: `${xPos}px`, top: `${yPos}px` }"
   ></div>
@@ -11,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, onBeforeUnmount, ref } from "vue";
-import { useDataStore } from "../store/main";
+import { useDataStore } from "../store/main.js";
 
 export default defineComponent({
   setup() {
@@ -36,6 +37,7 @@ export default defineComponent({
 });
 </script>
 <style lang="scss">
+@import "~@fortawesome/fontawesome-free/css/all.css";
 @import "../scss/main.scss";
 
 .custom-cursor {
@@ -48,7 +50,8 @@ export default defineComponent({
   padding: 0;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  transition: background-color 0.4s ease-out, padding 0.4s ease-out;
+  transition: background-color 0.4s ease-out, padding 0.4s ease-out,
+    scale 0.4s ease-out;
   &.hover-navigation {
     background-color: transparent;
     border: 1px solid $primary-color;
@@ -56,8 +59,34 @@ export default defineComponent({
     transition: background-color 0.4s ease-in, padding 0.4s ease-in;
   }
   &.hover-content {
-    mix-blend-mode:exclusion;
-    scale: 1.2;
+    mix-blend-mode: exclusion;
+  }
+  &.hover-project {
+    scale: 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: scale 0.4s ease-in;
+    overflow: hidden;
+    &::after {
+      font-family: "Font Awesome 5 Free";
+      content: "\f178";
+      display: inline-block;
+      vertical-align: middle;
+      font-weight: 900;
+      font-size: 0.4rem;
+      color: $white;
+      transition: all 0.4s ease-out;
+      animation: moving-arrow 0.4s ease-out;
+    }
+  }
+}
+@keyframes moving-arrow{
+  from{
+    transform: translateX(-50px);
+  }
+  to{
+    transform: translateX(0);
   }
 }
 </style>

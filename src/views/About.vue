@@ -31,59 +31,7 @@
   </div>
 </template>
 
-// <script lang="ts">
-// import { defineComponent, ref, onMounted } from "vue";
-// import gsap from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// export default defineComponent({
-//   name: "Home",
-//   setup() {
-//     gsap.registerPlugin(ScrollTrigger);
-//     const homeElements = ref<HTMLElement[]>([]);
-//     const container = ref<HTMLElement[]>([]);
-//     let sliderContainer = ref("sliderContainerRef");
-//     let progressWidth = ref(0)
-
-//     onMounted(() => {
-//       homeElements.value = gsap.utils.toArray(".home");
-//       homeElements.value.forEach((element) => {
-//         ScrollTrigger.create({
-//           trigger: element,
-//           start: "top top",
-//           // end: '+=300',
-//           pin: true,
-//           pinSpacing: false,
-//           end: "+=" + 100 * homeElements.value.length + '%',
-//           markers: true,
-//           scrub: true,
-//         });
-//       });
-
-//       container.value = gsap.utils.toArray(".panel");
-//       gsap.to(".horizontal-container", {
-//         xPercent: -(100 * (container.value.length - 1)),
-//         scrollTrigger: {
-//           trigger: ".horizontal-wrapper",
-//           start: "center center",
-//           end: "+=" + 100 * container.value.length + "%",
-//           pin: "#mainContainer",
-//           scrub: 0.5,
-//           snap: 1 / (container.value.length - 1),
-//           markers: true,
-//         },
-//       });
-//       ScrollTrigger.create({
-//         trigger: ".progress-bar",
-//         start: "top center",
-//         end: "home-4",
-//         onUpdate: (self) =>  {progressWidth.value = self.progress; let progressBar = Math.floor(progressWidth.value *100); return progressBar}
-//       });
-//     });
-//     return { sliderContainer };
-//   },
-// });
-// </script>
 
 <style lang="scss" scoped>
 h1 {
