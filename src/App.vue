@@ -1,7 +1,5 @@
 <template>
-  <!-- <div class="container"> -->
     <Navigation />
-  <!-- </div> -->
 </template>
 
 <script lang="ts">

@@ -9,7 +9,6 @@
         <span>Bonjour, Je suis Clément</span>
         <span>Développeur Front-End</span>
         <span>- Entrepreneur & Créatif</span>
-        {{ store.count }}
       </h1>
       <div
         class="presentation-other-skills"
@@ -27,10 +26,10 @@
         </p>
       </div>
     </section>
-    <section class="video">
-      <img src="@/assets/moi.png" alt="" class="video-skills" />
+    <section class="picture">
+      <img src="@/assets/moi.png" alt="" class="picture-skills" />
       <p
-        class="video-presentation"
+        class="picture-presentation"
         @mouseover="store.isHoveringContent = true"
         @mouseout="store.isHoveringContent = false"
       >
@@ -38,7 +37,7 @@
         ><br /><br /><br /><br />
 
         A la suite d’une année dans le E-commerce, au sein de
-        <b> SUTUNAM France**</b>, j’ai pu renforcer mes compétences sur
+        <b> SUTUNAM France</b>, j’ai pu renforcer mes compétences sur
         plusieurs stacks, principalement <b>Magento</b>qui m’a également amené à
         explorer<b>AlpineJs</b>,<b>Tailwind</b>,<b>Jquery</b>,<b>PHP</b> et le
         <b>XML.</b> Je suis également familier avec
@@ -56,7 +55,7 @@
           CompositionApi, Typescript.</b
         ><br /><br />
         Et par la suite,<b>GSAP</b>,<b>WebGL</b> et
-        <b>ThreeJs**</b>.<br /><br />
+        <b>ThreeJs</b>.<br /><br />
 
         C’est pourquoi je veux mettre ma passion, mon sérieux et ma résilience
         au profit de l’équipe et des projets que vous pourrez me confier, le
@@ -117,6 +116,8 @@ export default defineComponent({
     onMounted(() => {
       store.getDataFromFirebase();
 
+      //GSAP Animation sur le h1 du haut de page //
+
       homeElements.value = gsap.utils.toArray(".presentation span");
       homeElements.value.forEach((span: HTMLElement, index: number) => {
         gsap.to(span, {
@@ -143,7 +144,7 @@ export default defineComponent({
           scrub: true,
         },
       });
-      tl.to(".video-skills", {
+      tl.to(".picture-skills", {
         borderRadius: 20,
         marginLeft: "5vw",
         width: "15vw",
@@ -156,7 +157,7 @@ export default defineComponent({
           scrub: true,
         },
       });
-      tl.to(".video-presentation", {
+      tl.to(".picture-presentation", {
         opacity: 1,
         duration: 1,
         scrollTrigger: {
@@ -170,7 +171,7 @@ export default defineComponent({
         duration: 3,
         transform: "translateX(0)",
         scrollTrigger: {
-          trigger: ".video-skills",
+          trigger: ".picture-skills",
           start: "center center",
           end: "+=500",
           // markers: true,
@@ -201,10 +202,11 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import "../scss/main.scss";
 main {
-  width: 400vw;
+   // Section Présentation
   .presentation {
     display: flex;
     padding: 20vh 0 15vh;
+    justify-content: space-between;
     h1 {
       position: relative;
       font-size: 3.5rem;
@@ -238,11 +240,12 @@ main {
       }
     }
   }
-  .video {
+   // Section Picture
+  .picture {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    .video-skills {
+    .picture-skills {
       position: relative;
       width: auto;
       height: 600px;
@@ -254,7 +257,6 @@ main {
     p {
       position: relative;
       opacity: 0;
-      // transform: translateY(150px);
       width: 45vw;
       display: inline-block;
       margin-left: 5vw;
@@ -278,6 +280,7 @@ main {
       background: $primary-color;
     }
   }
+  // Section Projets
   .projects {
     grid-column-gap: 14vw;
     grid-row-gap: 6vw;
@@ -316,7 +319,6 @@ main {
       font-weight: 400;
       width: fit-content;
       background: $background-color;
-      // overflow: hidden;
       &:hover::after {
         font-family: "Font Awesome 5 Free";
         content: "\f178";

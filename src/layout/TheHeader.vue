@@ -1,6 +1,5 @@
 <template>
   <nav class="container">
-    <Cursor />
     <img src="../assets/PP.svg" alt="" class="pp-logo" />
     <router-link
       v-for="(route, index) in routes"
@@ -21,22 +20,15 @@
 <script lang="ts">
 import { defineComponent, computed, onMounted, ref } from "vue";
 import gsap from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Cursor from "@/components/CustomCursor.vue";
 import { useDataStore } from "../store/main";
 
 export default defineComponent({
-  components: {
-    Cursor,
-  },
   setup() {
     const store = useDataStore();
-    // gsap.registerPlugin(ScrollTrigger)
     const routes = computed(() => [
       { id: 0, path: "/", name: "Home" },
       { id: 1, path: "/about", name: "About" },
       { id:2, path: "/work", name: "Projects" },
-      // { id: 3, path: "/test", name: "Contact" },
     ]);
     const setIndexValue = ref<number | null>(null);
     const handleMouseDown = (index: number) => {
@@ -87,8 +79,6 @@ export default defineComponent({
 nav {
   gap: 20px;
   display: flex;
-  // flex-direction: column;
-  // align-items: flex-start;
   .pp-logo {
     width: 50px;
     height: 50px;
