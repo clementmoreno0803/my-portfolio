@@ -26,7 +26,7 @@
         {{ techno.name }}
       </h3>
     </div>
-    <p>{{projet.description}}</p>
+    <h4>{{project.description}}</h4>
   </div>
 </template>
 
@@ -86,6 +86,10 @@ export default defineComponent({
     }
   }
 
+    h4{
+      color: $primary-color;
+      font-size: 0.8rem;
+          }
   .project-techno {
     transform-origin: center center;
   }

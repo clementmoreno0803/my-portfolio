@@ -6,6 +6,8 @@ export const useDataStore = defineStore('data', {
         isHoveringContent: false,
         isHoverNavigation: false,
         isHoverProject: false,
+        isHoveringFooter: false,
+        isHoveringFooterContent: false,
         projects: []
     }),
     getters: {

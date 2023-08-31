@@ -5,6 +5,8 @@
       'hover-content': store.isHoveringContent,
       'hover-navigation': store.isHoverNavigation,
       'hover-project': store.isHoverProject,
+      'hover-footer': store.isHoveringFooter,
+      'hover-footer-content': store.isHoveringFooter,
     }"
     :style="{ left: `${xPos}px`, top: `${yPos}px` }"
   ></div>
@@ -80,12 +82,18 @@ export default defineComponent({
       animation: moving-arrow 0.4s ease-out;
     }
   }
+  &.hover-footer {
+    background: $white;
+  &.hover-footer-content{
+        mix-blend-mode:luminosity;
+  }
+  }
 }
-@keyframes moving-arrow{
-  from{
+@keyframes moving-arrow {
+  from {
     transform: translateX(-50px);
   }
-  to{
+  to {
     transform: translateX(0);
   }
 }

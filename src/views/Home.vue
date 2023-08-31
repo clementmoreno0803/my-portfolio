@@ -29,7 +29,7 @@
     </section>
     <section class="video">
       <img
-        src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2787&q=80"
+        src="@/assets/moi.png"
         alt=""
         class="video-skills"
       />
@@ -60,9 +60,11 @@
       >
         <ProjectCard :project="project" />
       </div>
-      <p>To the next level</p>
+      <router-link to="/work" class="projects-all"
+        >VOIR TOUS LES PROJETS</router-link
+      >
     </section>
-    <section class="contact"></section>
+    <the-footer></the-footer>
   </main>
 </template>
 
@@ -73,11 +75,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import Cursor from "@/components/CustomCursor.vue";
 import ProjectCard from "@/components/ProjectCard.vue";
+import TheFooter from "@/layout/TheFooter.vue";
 
 export default defineComponent({
   components: {
     Cursor,
     ProjectCard,
+    TheFooter
   },
   setup() {
     const homeElements = ref<HTMLElement[]>([]);
@@ -139,12 +143,12 @@ export default defineComponent({
         },
       });
       tl.to(".project-title", {
-        duration: 6,
+        duration: 3,
         transform: "translateX(0)",
         scrollTrigger: {
           trigger: ".video-skills",
           start: "center center",
-          end: "+=200",
+          end: "+=500",
           // markers: true,
           scrub: true,
         },
@@ -239,7 +243,7 @@ main {
     font-size: 6rem;
     font-weight: 600;
     color: $primary-color;
-    transform: translateX(30%);
+    transform: translateX(30vw);
 
     .project-union {
       content: "";
@@ -259,15 +263,13 @@ main {
     padding: 0 14vw;
     transform: translateY(50px);
     align-items: center;
+    justify-items: center;
     .project-card {
       &:nth-child(1) {
         grid-row: span 2;
         height: 100%;
         width: 100%;
       }
-      // &:nth-child(2) {
-      //   background: purple;
-      // }
       &:nth-child(3) {
         grid-row: span 2;
         height: 100%;
@@ -277,6 +279,35 @@ main {
         grid-row: span 2;
         height: 100%;
         width: 100%;
+      }
+    }
+    .projects-all {
+      font-size: 1.2rem;
+      color: $primary-color;
+      padding-bottom: 5px;
+      border-bottom: 2px solid $primary-color;
+      text-decoration: none;
+      display: inline;
+      transform: translateY(-10vh);
+      font-weight: 400;
+      width: fit-content;
+      background: $background-color;
+      // overflow: hidden;
+      &:hover::after {
+        font-family: "Font Awesome 5 Free";
+        content: "\f178";
+        display: inline-block;
+        vertical-align: middle;
+        padding-left: 10px;
+        font-weight: 900;
+        font-size: 1rem;
+        position  : absolute;
+        right: -25px; 
+        top : 5px;
+        color: $primary-color;
+        transition: all 0.4s ease-out;
+        animation: moving-arrow 0.4s ease-out;
+        z-index: -1;
       }
     }
   }
