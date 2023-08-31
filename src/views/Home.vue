@@ -28,21 +28,47 @@
       </div>
     </section>
     <section class="video">
-      <img
-        src="@/assets/moi.png"
-        alt=""
-        class="video-skills"
-      />
+      <img src="@/assets/moi.png" alt="" class="video-skills" />
       <p
         class="video-presentation"
         @mouseover="store.isHoveringContent = true"
         @mouseout="store.isHoveringContent = false"
       >
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam tempora
-        molestiae omnis nesciunt? Labore optio nemo amet. Numquam consequuntur
-        mollitia nemo dicta veniam? Voluptas facilis, veritatis porro quos odit
-        iusto accusantium ratione pariatur vitae architecto recusandae accusamus
-        quod veniam labore.
+        <b>Mon projet à 5 ans ? Devenir Creative Developer</b
+        ><br /><br /><br /><br />
+
+        A la suite d’une année dans le E-commerce, au sein de
+        <b> SUTUNAM France**</b>, j’ai pu renforcer mes compétences sur
+        plusieurs stacks, principalement <b>Magento</b>qui m’a également amené à
+        explorer<b>AlpineJs</b>,<b>Tailwind</b>,<b>Jquery</b>,<b>PHP</b> et le
+        <b>XML.</b> Je suis également familier avec
+        <b>Docker</b>,<b>Composer</b>et <b>GitLab</b> qui faisait partie
+        intégrante de notre écosystème. <br /><br />
+
+        Passionné par la créativité des sites
+        <a href="https://www.awwwards.com/"> Awwwards</a>, leurs beautés et
+        leurs complexités, je souhaite devenir <b>Créative dev.</b> à moyen
+        terme. <br />
+        Je développe donc ma palette de compétences dans cette direction, en
+        autonomie depuis 3 mois, avec l’apprentissage de <b>Vuejs</b>, et d’une
+        <b>centaine d’autres points</b> englobant<b
+          >Accessibilité, SEO, HTML, CSS, SCSS, Vanilla Js, VueJs, Pinia,
+          CompositionApi, Typescript.</b
+        ><br /><br />
+        Et par la suite,<b>GSAP</b>,<b>WebGL</b> et
+        <b>ThreeJs**</b>.<br /><br />
+
+        C’est pourquoi je veux mettre ma passion, mon sérieux et ma résilience
+        au profit de l’équipe et des projets que vous pourrez me confier, le
+        tout avec implication et créativité.<br /><br />
+
+        <u
+          >Très curieux et autonome, j’aime apprendre, essayer, trouver des
+          solutions, réessayer, le tout dans un environnement capable d’assurer
+          mon développement professionnel tout en me permettant d’exprimer ma
+          vision en tant que développeur, mais également en tant que créatif, et
+          entrepreneur.</u
+        >
       </p>
     </section>
     <h2
@@ -81,7 +107,7 @@ export default defineComponent({
   components: {
     Cursor,
     ProjectCard,
-    TheFooter
+    TheFooter,
   },
   setup() {
     const homeElements = ref<HTMLElement[]>([]);
@@ -132,13 +158,11 @@ export default defineComponent({
       });
       tl.to(".video-presentation", {
         opacity: 1,
-        duration: 3,
-        delay: 2,
-        transform: "translateY(0)",
+        duration: 1,
         scrollTrigger: {
           trigger: ".presentation-other-skills",
-          start: "bottom bottom",
-          end: "+=400",
+          start: "top top",
+          end: "+=200",
           scrub: true,
         },
       });
@@ -230,7 +254,7 @@ main {
     p {
       position: relative;
       opacity: 0;
-      transform: translateY(150px);
+      // transform: translateY(150px);
       width: 45vw;
       display: inline-block;
       margin-left: 5vw;
@@ -301,21 +325,15 @@ main {
         padding-left: 10px;
         font-weight: 900;
         font-size: 1rem;
-        position  : absolute;
-        right: -25px; 
-        top : 5px;
+        position: absolute;
+        right: -25px;
+        top: 5px;
         color: $primary-color;
         transition: all 0.4s ease-out;
         animation: moving-arrow 0.4s ease-out;
         z-index: -1;
       }
     }
-  }
-
-  .contact {
-    width: 100%;
-    height: 20vh;
-    background: $primary-color;
   }
 }
 </style>

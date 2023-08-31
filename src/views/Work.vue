@@ -1,5 +1,5 @@
 <template>
-  <div><h2>Page en construction..</h2></div>
+  <div><h2>Page en construction.. Works sera ici</h2></div>
 </template>
 
 <script lang="ts">

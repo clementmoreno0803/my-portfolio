@@ -1,8 +1,7 @@
 <template>
   <nav class="container">
-    <Cursor
-    /> 
-    <img src="../assets/PP.svg" alt="" class="pp-logo">
+    <Cursor />
+    <img src="../assets/PP.svg" alt="" class="pp-logo" />
     <router-link
       v-for="(route, index) in routes"
       :key="index"
@@ -24,7 +23,7 @@ import { defineComponent, computed, onMounted, ref } from "vue";
 import gsap from "gsap";
 // import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Cursor from "@/components/CustomCursor.vue";
-import {useDataStore} from '../store/main'
+import { useDataStore } from "../store/main";
 
 export default defineComponent({
   components: {
@@ -36,8 +35,8 @@ export default defineComponent({
     const routes = computed(() => [
       { id: 0, path: "/", name: "Home" },
       { id: 1, path: "/about", name: "About" },
-      { path: "/test", name: "Projects" },
-      { path: "/test", name: "Contact" },
+      { id:2, path: "/work", name: "Projects" },
+      // { id: 3, path: "/test", name: "Contact" },
     ]);
     const setIndexValue = ref<number | null>(null);
     const handleMouseDown = (index: number) => {
@@ -57,7 +56,6 @@ export default defineComponent({
       }
     };
 
-
     onMounted(() => {
       gsap.to(".router-link", {
         y: 20,
@@ -65,7 +63,7 @@ export default defineComponent({
         duration: 0.6,
         stagger: 0.2,
       });
-     gsap.to(".pp-logo", {
+      gsap.to(".pp-logo", {
         duration: 1,
         opacity: 1,
         top: 20,
@@ -77,7 +75,7 @@ export default defineComponent({
       handleMouseDown,
       handleMouseUp,
       routes,
-      store
+      store,
     };
   },
 });
@@ -91,14 +89,14 @@ nav {
   display: flex;
   // flex-direction: column;
   // align-items: flex-start;
-  .pp-logo{
+  .pp-logo {
     width: 50px;
     height: 50px;
     position: fixed;
     right: 40px;
     top: -20px;
     z-index: 1;
-    opacity: 0,
+    opacity: 0;
   }
   a {
     opacity: 0;
