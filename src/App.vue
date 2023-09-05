@@ -1,16 +1,25 @@
 <template>
-    <Navigation />
+  <Navigation />
+  <Footer />
+  
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import Navigation from '@/layout/TheHeader.vue'
+import { defineComponent } from "vue";
+import Navigation from "@/layout/TheHeader.vue";
+import { useDataStore } from "./store/main";
+import Footer from '@/layout/TheFooter.vue'
 
 export default defineComponent({
   components: {
-    Navigation
+    Navigation,
+    Footer
   },
-})
+  setup() {
+    const store = useDataStore();
+    return { store };
+  },
+});
 </script>
 
 
@@ -35,9 +44,8 @@ body {
 }
 
 .container {
-width: calc(100% - 160px);
-max-width: 1280px;
-margin: 0 auto;
+  width: calc(100% - 160px);
+  max-width: 1280px;
+  margin: 0 auto;
 }
-
 </style>

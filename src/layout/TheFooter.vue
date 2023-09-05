@@ -1,49 +1,51 @@
 <template>
-  <section class="footer">
-    <div
-      class="work-together"
-      @mouseover="store.isHoveringFooter = true"
-      @mouseout="store.isHoveringFooter = false"
-    >
-      <div class="work-together-title">
-        <h2
-          @mouseover="store.isHoveringFooterContent = true"
-          @mouseout="store.isHoveringFooterContent = false"
-        >
-          Prêt à travailler ensemble ?
-        </h2>
-        <a href="mailto:clementmoreno0803@gmail.com" target="blank"
-          >Laissez moi un petit Message</a
-        >
+  <div class="container">
+    <section class="footer">
+      <div
+        class="work-together"
+        @mouseover="store.isHoveringFooter = true"
+        @mouseout="store.isHoveringFooter = false"
+      >
+        <div class="work-together-title">
+          <h2
+            @mouseover="store.isHoveringFooterContent = true"
+            @mouseout="store.isHoveringFooterContent = false"
+          >
+            Prêt à travailler ensemble ?
+          </h2>
+          <a href="mailto:clementmoreno0803@gmail.com" target="blank"
+            >Laissez moi un petit Message</a
+          >
+        </div>
+        <div class="work-together-objectifs">
+          <p>Objectifs de carrière:</p>
+          <p>Apprendre WebGL / ThreeJS</p>
+          <p>Devenir Developpeur Créatif</p>
+          <p>
+            Gagner un Awwwards
+            <i class="fa-solid fa-trophy" style="color: #ffffff"></i>
+          </p>
+        </div>
       </div>
-      <div class="work-together-objectifs">
-        <p>Objectifs de carrière:</p>
-        <p>Apprendre WebGL / ThreeJS</p>
-        <p>Devenir Developpeur Créatif</p>
-        <p>
-          Gagner un Awwwards
-          <i class="fa-solid fa-trophy" style="color: #ffffff"></i>
-        </p>
+    </section>
+    <section class="network">
+      <div class="network-icons">
+        <ul>
+          <li>
+            <a href="https://github.com/clementmoreno0803"
+              ><i class="fa-brands fa-github" style="color: #ffffff"></i
+            ></a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/cl%C3%A9ment-moreno/"
+              ><i class="fa-brands fa-linkedin" style="color: #ffffff"></i
+            ></a>
+          </li>
+        </ul>
+        <img src="@/assets/footerPP.svg" alt="" />
       </div>
-    </div>
-  </section>
-  <section class="network">
-    <div class="network-icons">
-      <ul>
-        <li>
-          <a href="https://github.com/clementmoreno0803"
-            ><i class="fa-brands fa-github" style="color: #ffffff"></i
-          ></a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/in/cl%C3%A9ment-moreno/"
-            ><i class="fa-brands fa-linkedin" style="color: #ffffff"></i
-          ></a>
-        </li>
-      </ul>
-      <img src="@/assets/footerPP.svg" alt="" />
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script lang="ts">
@@ -60,7 +62,7 @@ export default defineComponent({
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss" >
 @import "../scss/main.scss";
 .work-together {
   width: calc(100% - 300px);

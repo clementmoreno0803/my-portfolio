@@ -12,7 +12,7 @@ export const useDataStore = defineStore('data', {
     }),
     getters: {
         projectsPreview() {
-            return this.projects.slice(0, 4);
+            return this.projects.slice(0, 3);
         }
     },
     actions: {

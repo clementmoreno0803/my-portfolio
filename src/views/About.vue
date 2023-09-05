@@ -1,18 +1,15 @@
 <template>
-  <div><h2>Page en construction..</h2></div>
+  <div class="attente">
+    en construction
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
+export default {
 
-export default defineComponent({
-  setup() {
-    return {}
-  },
-})
+}
 </script>
 
-
-<style lang="scss">
+<style>
 
 </style>

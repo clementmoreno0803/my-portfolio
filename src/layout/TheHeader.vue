@@ -15,7 +15,7 @@
       {{ route.name }}
     </router-link>
   </nav>
-  <router-view />
+  <router-view >  </router-view>
 </template>
 <script lang="ts">
 import { defineComponent, computed, onMounted, ref } from "vue";
@@ -28,7 +28,7 @@ export default defineComponent({
     const routes = computed(() => [
       { id: 0, path: "/", name: "Home" },
       { id: 1, path: "/about", name: "About" },
-      { id:2, path: "/work", name: "Projects" },
+      { id: 2, path: "/work", name: "Projects" },
     ]);
     const setIndexValue = ref<number | null>(null);
     const handleMouseDown = (index: number) => {
@@ -104,4 +104,5 @@ nav {
     }
   }
 }
+
 </style>

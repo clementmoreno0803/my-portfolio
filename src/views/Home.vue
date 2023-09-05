@@ -37,8 +37,8 @@
         ><br /><br /><br /><br />
 
         A la suite d’une année dans le E-commerce, au sein de
-        <b> SUTUNAM France</b>, j’ai pu renforcer mes compétences sur
-        plusieurs stacks, principalement <b>Magento</b>qui m’a également amené à
+        <b> SUTUNAM France</b>, j’ai pu renforcer mes compétences sur plusieurs
+        stacks, principalement <b>Magento</b>qui m’a également amené à
         explorer<b>AlpineJs</b>,<b>Tailwind</b>,<b>Jquery</b>,<b>PHP</b> et le
         <b>XML.</b> Je suis également familier avec
         <b>Docker</b>,<b>Composer</b>et <b>GitLab</b> qui faisait partie
@@ -50,11 +50,11 @@
         terme. <br />
         Je développe donc ma palette de compétences dans cette direction, en
         autonomie depuis 3 mois, avec l’apprentissage de <b>Vuejs</b>, et d’une
-        <b>centaine d’autres points</b> englobant<b
-          >Accessibilité, SEO, HTML, CSS, SCSS, Vanilla Js, VueJs, Pinia,
+        <b>centaine d’autres points</b> englobant<b>
+          Accessibilité, SEO, HTML, CSS, SCSS, Vanilla Js, VueJs, Pinia,
           CompositionApi, Typescript.</b
         ><br /><br />
-        Et par la suite,<b>GSAP</b>,<b>WebGL</b> et
+        Et par la suite, <b>GSAP</b>, <b>WebGL</b> et
         <b>ThreeJs</b>.<br /><br />
 
         C’est pourquoi je veux mettre ma passion, mon sérieux et ma résilience
@@ -85,11 +85,11 @@
       >
         <ProjectCard :project="project" />
       </div>
-      <router-link to="/work" class="projects-all"
+      <img src="@/assets/techno.svg" alt="" class="project-techno" />
+      <router-link to="/work/#work" class="projects-all"
         >VOIR TOUS LES PROJETS</router-link
       >
     </section>
-    <the-footer></the-footer>
   </main>
 </template>
 
@@ -99,23 +99,37 @@ import { useDataStore } from "../store/main.js";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import Cursor from "@/components/CustomCursor.vue";
-import ProjectCard from "@/components/ProjectCard.vue";
-import TheFooter from "@/layout/TheFooter.vue";
+import ProjectCard from "@/components/ProjectCards.vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   components: {
     Cursor,
     ProjectCard,
-    TheFooter,
   },
   setup() {
     const homeElements = ref<HTMLElement[]>([]);
+    const projects = ref<HTMLElement[]>([]);
     gsap.registerPlugin(ScrollTrigger);
     const store = useDataStore();
+    const router = useRouter()
 
-    onMounted(() => {
-      store.getDataFromFirebase();
+    // Fonction pour faire défiler la page vers le haut
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth", // Ajoute un effet de défilement en douceur
+      });
+    };
 
+    onMounted(async () => {
+      await store.getDataFromFirebase();
+      router.beforeEach((to, from, next) => {
+        // Faites défiler la page vers le haut avant de naviguer
+        scrollToTop();
+        next();
+      });
+      
       //GSAP Animation sur le h1 du haut de page //
 
       homeElements.value = gsap.utils.toArray(".presentation span");
@@ -159,7 +173,8 @@ export default defineComponent({
       });
       tl.to(".picture-presentation", {
         opacity: 1,
-        duration: 1,
+        duration: 0.5,
+        transform: "translateX(0)",
         scrollTrigger: {
           trigger: ".presentation-other-skills",
           start: "top top",
@@ -168,19 +183,19 @@ export default defineComponent({
         },
       });
       tl.to(".project-title", {
-        duration: 3,
+        duration: 4,
+        opacity: 1,
         transform: "translateX(0)",
         scrollTrigger: {
-          trigger: ".picture-skills",
+          trigger: ".picture",
           start: "center center",
           end: "+=500",
-          // markers: true,
           scrub: true,
         },
       });
       tl.to(".projects", {
-        duration: 2,
-        transform: "translateY(-80px)",
+        duration: 1,
+        transform: "translateY(-100px)",
         scrollTrigger: {
           trigger: ".project-title",
           start: "bottom bottom",
@@ -189,10 +204,37 @@ export default defineComponent({
           scrub: true,
         },
       });
+
+      tl.to(".project-techno", {
+        rotate: "720deg",
+        duration: 2,
+        scrollTrigger: {
+          trigger: ".project-title",
+          start: "bottom bottom",
+          end: "+=1000",
+          scrub: true,
+        },
+      });
+
+      projects.value = gsap.utils.toArray(".project-card");
+      projects.value.forEach((project) => {
+        tl.to(project, {
+          opacity: 1,
+          duration: 60,
+          scrollTrigger: {
+            trigger: project,
+            start: "top center",
+            end: "top top",
+            markers: true,
+            scrub: true,
+          },
+        });
+      });
     });
 
     return {
       store,
+      scrollToTop,
     };
   },
 });
@@ -202,7 +244,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import "../scss/main.scss";
 main {
-   // Section Présentation
+  // Section Présentation
   .presentation {
     display: flex;
     padding: 20vh 0 15vh;
@@ -240,7 +282,7 @@ main {
       }
     }
   }
-   // Section Picture
+  // Section Picture
   .picture {
     display: flex;
     justify-content: flex-start;
@@ -259,53 +301,23 @@ main {
       opacity: 0;
       width: 45vw;
       display: inline-block;
-      margin-left: 5vw;
-    }
-  }
-
-  // Big title to announce the projects
-  .project-title {
-    width: 100vw;
-    font-size: 6rem;
-    font-weight: 600;
-    color: $primary-color;
-    transform: translateX(30vw);
-
-    .project-union {
-      content: "";
-      display: inline-block;
-      transform: translateY(-30px);
-      width: 100px;
-      height: 2px;
-      background: $primary-color;
+      transform: translateX(100px);
+      margin-left: 10vw;
     }
   }
   // Section Projets
   .projects {
-    grid-column-gap: 14vw;
-    grid-row-gap: 6vw;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: 1fr auto;
-    padding: 0 14vw;
     transform: translateY(50px);
-    align-items: center;
-    justify-items: center;
+    display: flex;
+    padding: 0 10vw;
+    flex-direction: column;
     .project-card {
-      &:nth-child(1) {
-        grid-row: span 2;
-        height: 100%;
-        width: 100%;
-      }
-      &:nth-child(3) {
-        grid-row: span 2;
-        height: 100%;
-        width: 100%;
-      }
-      &:nth-child(4) {
-        grid-row: span 2;
-        height: 100%;
-        width: 100%;
+      opacity: 0;
+      margin-bottom: 50px;
+      height: 80vh;
+      &:nth-child(2) {
+        display: flex;
+        justify-content: flex-end;
       }
     }
     .projects-all {
@@ -317,8 +329,11 @@ main {
       display: inline;
       transform: translateY(-10vh);
       font-weight: 400;
-      width: fit-content;
+      width: max-content;
       background: $background-color;
+      position: absolute;
+      bottom: 20vh;
+      right: 20vw;
       &:hover::after {
         font-family: "Font Awesome 5 Free";
         content: "\f178";
@@ -335,6 +350,29 @@ main {
         animation: moving-arrow 0.4s ease-out;
         z-index: -1;
       }
+    }
+    .project-techno {
+      position: absolute;
+      top: 20vh;
+      right: 20vw;
+    }
+  }
+  // Big title to announce the projects
+  .project-title {
+    width: 100vw;
+    font-size: 6rem;
+    font-weight: 600;
+    color: $primary-color;
+    transform: translateX(40vw);
+    opacity: 0;
+
+    .project-union {
+      content: "";
+      display: inline-block;
+      transform: translateY(-30px);
+      width: 100px;
+      height: 2px;
+      background: $primary-color;
     }
   }
 }
