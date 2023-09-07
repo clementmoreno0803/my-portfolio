@@ -22,6 +22,7 @@ export const useDataStore = defineStore('data', {
                     .then((response) => {
                         const data = response.data
                         this.projects = data
+                        console.log('data ok ')
                     })
             } catch (error) {
                 console.log(error)

@@ -2,20 +2,23 @@
   <div
     class="card"
     :class="route.path === '/' ? 'home' : 'all-project'"
+
   >
+  <router-link :to="'work/'+ index">
     <div
       class="card-image"
       @mouseover="store.isHoverProject = true"
       @mouseout="store.isHoverProject = false"
-    >
+    >  
       <img :src="require(`@/assets/${project.image}.png`)" alt="" srcset="" />
     </div>
+  </router-link>
     <div class="description">
       <h2>{{ project.title }}</h2>
       <div
         class="project-techno-tag"
         v-for="techno in project.languages"
-        :key="techno"
+        :key="techno.name" 
       >
         <h3>
           {{ techno.name }}
@@ -31,6 +34,8 @@ import { defineComponent, PropType } from "vue";
 import Project from "../types/project";
 import { useDataStore } from "../store/main.js";
 import { useRoute } from "vue-router";
+import { RouterLink } from "vue-router";
+
 
 export default defineComponent({
   props: {
@@ -38,12 +43,25 @@ export default defineComponent({
       required: true,
       type: Object as PropType<Project>,
     },
+    index: {
+      required: true,
+      type: Number,
+    }
+  },
+  components: {
+    RouterLink
   },
   setup() {
     const store = useDataStore();
     const route = useRoute();
 
-    return { store, route };
+const id: number = Array.isArray(route.params.id)
+  ? parseInt(route.params.id[0])
+  : parseInt(route.params.id);
+
+
+
+    return { store, route, id };
   },
 });
 </script>
@@ -89,7 +107,7 @@ export default defineComponent({
   h4 {
     color: $primary-color;
     font-size: 0.8rem;
-    width: 50%;
+    max-width: 80%;
     margin: 0 auto;
   }
 

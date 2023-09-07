@@ -1,12 +1,13 @@
 <template>
-  <main class="container" id="work">
+  <main class="container">
     <Cursor />
     <h2
       @mouseover="store.isHoveringContent = true"
       @mouseout="store.isHoveringContent = false"
       class="project-title"
     >
-      Projets <span class="project-union"></span> Selectionnés
+      Projets <span class="project-union"></span>
+      <span class="selected"> Selectionnés</span>
     </h2>
     <section class="projects">
       <div class="project-container">
@@ -15,10 +16,18 @@
           :key="index"
           class="project-container-card"
         >
-          <AllProject :project="project" class="cards" />
+          <AllProject :project="project" :index='index' class="cards" />
         </div>
       </div>
     </section>
+    <!-- La page Work référencie tous les projets -->
+    <!-- On récupère les cards via le composant enfant 'All Project' -->
+    <!-- On récupère aussi l'index via la boucle v-for -->
+
+    <!-- --------------------- -->
+
+    <!-- Au click on ouvre une nouvelle page avec l'index du projet -->
+    <!-- COMMENT PASSER LES INFOS AU GRAND ENFANT WorkDetail -->
   </main>
 </template>
 
@@ -52,15 +61,13 @@ export default defineComponent({
           transform: "translateX(0)",
           scrollTrigger: {
             trigger: el,
-            start: "center center",
+            start: "bottom bottom",
             end: "top top",
             markers: true,
             scrub: true,
           },
         });
       });
-
-      // });
     });
 
     return { store };
@@ -72,21 +79,45 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import "../scss/main.scss";
 .projects {
-  margin-bottom: 30vh;
+  margin-bottom: 10vh;
   .project-container-card {
     opacity: 0;
-    transform: translateX(50%);
+    transform: translateX(150px);
     height: 80vh;
     width: 100%;
-    
+
     &:nth-child(even) {
-      transform: translateX(-50%);
+      transform: translateX(-250px);
     }
     .cards {
       display: flex;
       align-items: center;
       justify-content: space-around;
     }
+  }
+}
+.project-title {
+  font-size: 6rem;
+  font-weight: 600;
+  color: $primary-color;
+  position: relative;
+  left: -8vw;
+  .selected {
+    font-size: 6rem;
+    font-weight: 600;
+    color: $primary-color;
+    opacity: 0.6;
+    position: absolute;
+    top: 60px;
+    right: 60px;
+  }
+  .project-union {
+    content: "";
+    display: inline-block;
+    transform: translateY(-30px);
+    width: 100px;
+    height: 2px;
+    background: $primary-color;
   }
 }
 </style>

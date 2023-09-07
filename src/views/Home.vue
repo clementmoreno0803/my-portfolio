@@ -86,7 +86,7 @@
         <ProjectCard :project="project" />
       </div>
       <img src="@/assets/techno.svg" alt="" class="project-techno" />
-      <router-link to="/work/#work" class="projects-all"
+      <router-link to="/work" class="projects-all"
         >VOIR TOUS LES PROJETS</router-link
       >
     </section>
@@ -117,7 +117,7 @@ export default defineComponent({
     // Fonction pour faire défiler la page vers le haut
     const scrollToTop = () => {
       window.scrollTo({
-        top: 0,
+        top: 50,
         behavior: "smooth", // Ajoute un effet de défilement en douceur
       });
     };

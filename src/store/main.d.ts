@@ -1,4 +1,5 @@
 import { defineStore } from "pinia"
+import Projet from "@/types/project"
 
 interface MyStoreState {
     isHoveringContent: boolean,
@@ -6,7 +7,7 @@ interface MyStoreState {
     isHoverProject: boolean,
     isHoveringFooter: boolean,
     isHoveringFooterContent: boolean,
-    projects: string[] = []
+    projects: Projet[] = []
 
 }
 
