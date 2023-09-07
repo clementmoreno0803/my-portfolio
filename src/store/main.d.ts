@@ -7,6 +7,7 @@ interface MyStoreState {
     isHoverProject: boolean,
     isHoveringFooter: boolean,
     isHoveringFooterContent: boolean,
+    projectsPreview: Project[] = [],
     projects: Projet[] = []
 
 }
@@ -21,6 +22,11 @@ export const useDataStore = defineStore('data', {
         isHoveringFooterContent: false,
         projects: []
     }),
+    getters: {
+        projectsPreview() {
+            return this.projects.slice(0, 3);
+        }
+    },
     actions: {
         getDataFromFirebase() {
             try {

@@ -4,11 +4,12 @@
     :class="route.path === '/' ? 'home' : 'all-project'"
 
   >
-  <router-link :to="'work/'+ index">
+  <router-link :to="'work/'+ project.id">
     <div
       class="card-image"
       @mouseover="store.isHoverProject = true"
       @mouseout="store.isHoverProject = false"
+      @click="store.isHoverProject = false"
     >  
       <img :src="require(`@/assets/${project.image}.png`)" alt="" srcset="" />
     </div>
@@ -43,10 +44,6 @@ export default defineComponent({
       required: true,
       type: Object as PropType<Project>,
     },
-    index: {
-      required: true,
-      type: Number,
-    }
   },
   components: {
     RouterLink
@@ -58,9 +55,6 @@ export default defineComponent({
 const id: number = Array.isArray(route.params.id)
   ? parseInt(route.params.id[0])
   : parseInt(route.params.id);
-
-
-
     return { store, route, id };
   },
 });

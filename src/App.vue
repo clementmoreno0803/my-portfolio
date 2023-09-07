@@ -40,7 +40,12 @@ body {
   text-align: center;
   color: #2c3e50;
   background: $background-color;
-  // cursor: none;
+  cursor: none;
+}
+
+h1,h2,h3,h4 {
+  margin: 0;
+  padding: 0;
 }
 
 .container {

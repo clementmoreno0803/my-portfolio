@@ -20,14 +20,6 @@
         </div>
       </div>
     </section>
-    <!-- La page Work référencie tous les projets -->
-    <!-- On récupère les cards via le composant enfant 'All Project' -->
-    <!-- On récupère aussi l'index via la boucle v-for -->
-
-    <!-- --------------------- -->
-
-    <!-- Au click on ouvre une nouvelle page avec l'index du projet -->
-    <!-- COMMENT PASSER LES INFOS AU GRAND ENFANT WorkDetail -->
   </main>
 </template>
 
