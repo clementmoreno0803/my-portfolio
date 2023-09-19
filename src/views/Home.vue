@@ -117,7 +117,7 @@ export default defineComponent({
     // Fonction pour faire défiler la page vers le haut
     const scrollToTop = () => {
       window.scrollTo({
-        top: 50,
+        top: 0,
         behavior: "smooth", // Ajoute un effet de défilement en douceur
       });
     };
@@ -200,7 +200,7 @@ export default defineComponent({
           trigger: ".project-title",
           start: "bottom bottom",
           end: "+=1000",
-          markers: true,
+          // markers: true,
           scrub: true,
         },
       });
@@ -225,7 +225,7 @@ export default defineComponent({
             trigger: project,
             start: "top center",
             end: "top top",
-            markers: true,
+            // markers: true,
             scrub: true,
           },
         });
@@ -327,13 +327,13 @@ main {
       border-bottom: 2px solid $primary-color;
       text-decoration: none;
       display: inline;
-      transform: translateY(-10vh);
+      transform: translateY(-20vh);
       font-weight: 400;
       width: max-content;
       background: $background-color;
       position: absolute;
       bottom: 20vh;
-      right: 20vw;
+      right: 20%;
       &:hover::after {
         font-family: "Font Awesome 5 Free";
         content: "\f178";

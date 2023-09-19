@@ -1,15 +1,22 @@
 <template>
-  <div class="attente">
+  <div class="container">
     en construction
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
 
-}
+export default defineComponent({
+  // setup() {
+    
+  // },
+})
 </script>
 
-<style>
+<style lang="scss" scoped>
 
+#app{
+  background: red;
+}
 </style>
