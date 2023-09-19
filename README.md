@@ -1,25 +1,17 @@
-# test-gsap
+# Objectif de ce projet
 
-## Project setup
-```
-npm install
-```
+## 1 - Tester et approfondir mes connaissances en GSAP
+## 2 - Appels REST API 
+## 3 - Utiliser Typescript + Pinia 
+## 4 - Créer des animations de cursor selon l'élément sur lequel on hover 
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+# Projet réalisé avec :
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-# my-portfollio
+## Vue 3
+## Vue Composition Api
+## Vue Router
+## Pinia
+## Typescript
+## GSAP
+## Firebase
+## Scss
