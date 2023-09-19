@@ -12,7 +12,7 @@
       </h3>
     </section>
     <section class="presentation">
-      <img :src="require(`@/assets/${currentProject.presentation}.jpg`)" alt="" srcset="" class="presentation-img">
+      <img :src="require(`@/assets/workDetail/${currentProject.presentation}.jpg`)" alt="" srcset="" class="presentation-img">
       <div class="presentation-description">
         <div class="project-techno-tag" v-for="techno in currentProject.languages" :key="techno.name">
           <h4>{{ techno.name }}</h4>
@@ -23,7 +23,7 @@
     </section>
     <section class="gallery">
       <div class="gallery-container" v-for="picture in currentProject.gallery" :key="picture.img">
-        <img :src="require(`@/assets/${picture.img}.jpg`)" alt="" class="gallery-container-img">
+        <img :src="require(`@/assets/workDetail/${picture.img}.jpg`)" alt="" class="gallery-container-img">
       </div>
     </section>
   </main>
@@ -38,7 +38,7 @@ import {
   ref,
   onMounted
 } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import Cursor from "@/components/CustomCursor.vue";
 import Project from "@/types/project";
 import gsap from 'gsap'
@@ -51,10 +51,21 @@ export default defineComponent({
   setup() {
     const store = useDataStore();
     const route = useRoute();
+    const router = useRouter()
     const gallery = ref<string[]>([])
 
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 50,
+        behavior: "smooth",
+      });
+    };
     onBeforeMount(() => {
       store.getDataFromFirebase();
+      router.beforeEach((to, from, next) => {
+        scrollToTop();
+        next();
+      });
     })
 
 
@@ -81,9 +92,9 @@ export default defineComponent({
           transform: "translateX(0)",
           scrollTrigger: {
             trigger: el,
-            start: "60% 60%",
-            end: "+=300",
-            markers: true,
+            start: "center center",
+            end: "+=800",
+            // markers: true,
             scrub: true,
           },
         });

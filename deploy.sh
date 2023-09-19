@@ -13,7 +13,7 @@ cd dist
 # echo 'www.example.com' > CNAME
 git init
 git add -A
-git commit -m 'WorkDetail view + typescript'
+git commit -m 'detail View Ok + Gsap animations'
 git push -f git@github.com:clementmoreno0803/my-portfolio.git main:gh-pages
 
 cd -

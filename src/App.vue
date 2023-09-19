@@ -41,11 +41,11 @@ body {
   color: #2c3e50;
   background: $background-color;
   cursor: none;
+  overflow: hidden;
 }
 
-h1,h2,h3,h4 {
-  margin: 0;
-  padding: 0;
+a:-webkit-any-link{
+  cursor: none;
 }
 
 .container {

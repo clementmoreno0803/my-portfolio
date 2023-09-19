@@ -117,7 +117,7 @@ export default defineComponent({
     // Fonction pour faire défiler la page vers le haut
     const scrollToTop = () => {
       window.scrollTo({
-        top: 50,
+        top: 0,
         behavior: "smooth", // Ajoute un effet de défilement en douceur
       });
     };
@@ -200,7 +200,7 @@ export default defineComponent({
           trigger: ".project-title",
           start: "bottom bottom",
           end: "+=1000",
-          markers: true,
+          // markers: true,
           scrub: true,
         },
       });
@@ -225,7 +225,7 @@ export default defineComponent({
             trigger: project,
             start: "top center",
             end: "top top",
-            markers: true,
+            // markers: true,
             scrub: true,
           },
         });
@@ -328,22 +328,30 @@ main {
       text-decoration: none;
       display: inline;
 <<<<<<< HEAD
+<<<<<<< HEAD
       transform: translateY(-20vh);
       transform: translateY(-20vh);
 =======
       transform: translateY(-10vh);
 >>>>>>> 6b4d238 (Revert "update assets + workDetail view")
+=======
+      transform: translateY(-20vh);
+>>>>>>> 6a0e58b (update assets + workDetail view)
       font-weight: 400;
       width: max-content;
       background: $background-color;
       position: absolute;
       bottom: 20vh;
 <<<<<<< HEAD
+<<<<<<< HEAD
       right: 20%;
       right: 20%;
 =======
       right: 20vw;
 >>>>>>> 6b4d238 (Revert "update assets + workDetail view")
+=======
+      right: 20%;
+>>>>>>> 6a0e58b (update assets + workDetail view)
       &:hover::after {
         font-family: "Font Awesome 5 Free";
         content: "\f178";

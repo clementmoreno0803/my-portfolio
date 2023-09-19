@@ -55,7 +55,7 @@ export default defineComponent({
             trigger: el,
             start: "bottom bottom",
             end: "top top",
-            markers: true,
+            // markers: true,
             scrub: true,
           },
         });
