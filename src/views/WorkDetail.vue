@@ -19,6 +19,7 @@
         </div>
         <h3>{{ currentProject.presTitle }} <span class="project-union"></span></h3>
         <h4>{{ currentProject.presDesc }}</h4>
+        <a :href="`https://github.com/clementmoreno0803/${currentProject.redirection}`" target="_blank">Aller vers la page Github de ce projet</a>
       </div>
     </section>
     <section class="gallery">
@@ -82,7 +83,7 @@ export default defineComponent({
 
     // Gsap animations 
     onMounted(() => {
-      gsap.registerPlugin(ScrollTrigger); // Appel
+      gsap.registerPlugin(ScrollTrigger);
       const tl = gsap.timeline();
       gallery.value = gsap.utils.toArray(".gallery-container-img");
       gallery.value.forEach((el) => {
@@ -94,7 +95,6 @@ export default defineComponent({
             trigger: el,
             start: "center center",
             end: "+=800",
-            // markers: true,
             scrub: true,
           },
         });

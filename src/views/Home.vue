@@ -38,7 +38,7 @@
 
         A la suite d’une année dans le E-commerce, au sein de
         <b> SUTUNAM France</b>, j’ai pu renforcer mes compétences sur plusieurs
-        stacks, principalement <b>Magento</b>qui m’a également amené à
+        stacks, principalement <b>Magento</b> qui m’a également amené à
         explorer<b>AlpineJs</b>,<b>Tailwind</b>,<b>Jquery</b>,<b>PHP</b> et le
         <b>XML.</b> Je suis également familier avec
         <b>Docker</b>,<b>Composer</b>et <b>GitLab</b> qui faisait partie
@@ -61,13 +61,11 @@
         au profit de l’équipe et des projets que vous pourrez me confier, le
         tout avec implication et créativité.<br /><br />
 
-        <u
-          >Très curieux et autonome, j’aime apprendre, essayer, trouver des
+        <u>Très curieux et autonome, j’aime apprendre, essayer, trouver des
           solutions, réessayer, le tout dans un environnement capable d’assurer
           mon développement professionnel tout en me permettant d’exprimer ma
           vision en tant que développeur, mais également en tant que créatif, et
-          entrepreneur.</u
-        >
+          entrepreneur.</u>
       </p>
     </section>
     <h2
@@ -200,7 +198,6 @@ export default defineComponent({
           trigger: ".project-title",
           start: "bottom bottom",
           end: "+=1000",
-          // markers: true,
           scrub: true,
         },
       });
@@ -225,7 +222,6 @@ export default defineComponent({
             trigger: project,
             start: "top center",
             end: "top top",
-            // markers: true,
             scrub: true,
           },
         });
@@ -328,11 +324,13 @@ main {
       text-decoration: none;
       display: inline;
       transform: translateY(-20vh);
+      transform: translateY(-20vh);
       font-weight: 400;
       width: max-content;
       background: $background-color;
       position: absolute;
       bottom: 20vh;
+      right: 20%;
       right: 20%;
       &:hover::after {
         font-family: "Font Awesome 5 Free";
