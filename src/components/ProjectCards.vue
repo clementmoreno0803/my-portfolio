@@ -32,7 +32,7 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import Project from "../types/project";
+import Project from '../types/project'
 import { useDataStore } from "../store/main.js";
 import { useRoute } from "vue-router";
 import { RouterLink } from "vue-router";

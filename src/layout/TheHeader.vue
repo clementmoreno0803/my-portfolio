@@ -5,8 +5,8 @@
       v-for="(route, index) in routes"
       :key="index"
       :to="route.path"
-      @mousedown="handleMouseDown(index, route)"
-      @mouseup="handleMouseUp(index)"
+      @mousedown="handleMouseDown(index)"
+      @mouseup="handleMouseUp()"
       @mouseover="store.isHoverNavigation = true"
       @mouseout="store.isHoverNavigation = false"
       class="router-link"
@@ -27,8 +27,7 @@ export default defineComponent({
     const store = useDataStore();
     const routes = computed(() => [
       { id: 0, path: "/", name: "Home" },
-      { id: 1, path: "/about", name: "About" },
-      { id: 2, path: "/work", name: "Projects" },
+      { id: 1, path: "/work", name: "Projects" },
     ]);
     const setIndexValue = ref<number | null>(null);
     const handleMouseDown = (index: number) => {

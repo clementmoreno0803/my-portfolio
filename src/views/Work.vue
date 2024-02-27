@@ -49,13 +49,12 @@ export default defineComponent({
       projects.value.forEach((el) => {
         tl.to(el, {
           opacity: 1,
-          duration: 4,
+          duration: 2,
           transform: "translateX(0)",
           scrollTrigger: {
             trigger: el,
             start: "bottom bottom",
             end: "top top",
-            // markers: true,
             scrub: true,
           },
         });
@@ -77,6 +76,11 @@ export default defineComponent({
     transform: translateX(150px);
     height: 80vh;
     width: 100%;
+
+    &:first-child{
+      opacity: 0.8;
+      transform: translateX(0);
+    }
 
     &:nth-child(even) {
       transform: translateX(-250px);
@@ -106,7 +110,6 @@ export default defineComponent({
   .project-union {
     content: "";
     display: inline-block;
-    transform: translateY(-30px);
     width: 100px;
     height: 2px;
     background: $primary-color;
