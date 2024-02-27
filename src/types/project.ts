@@ -1,14 +1,13 @@
 interface Projet {
-    id: number;
-    title: string;
-    languages: language[];
-    gallery: gallery[];
-    presentation: string;
-    image: string;
-    presTitle: string;
-    presDesc: string;
-    description: string;
-    redirection: string;
+    id: number,
+    title: string,
+    languages: language[],
+    gallery: gallery[],
+    presentation: string,
+    image: string,
+    presTitle: string,
+    presDesc: string, 
+    description : string
 }
 
 interface language {
@@ -18,5 +17,6 @@ interface language {
 interface gallery {
     img: string
 }
+
 
 export default Projet
